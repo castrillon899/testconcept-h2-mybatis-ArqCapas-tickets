@@ -17,7 +17,7 @@ import com.goldenrace.dto.GetTicketByRangeResponseDTO;
 import com.goldenrace.service.TicketService;
 
 /**
- * Interfaz que permite el registro y consulta de tickets
+ * Controlador que permite el registro y consulta de tickets
  * 
  * @Autor angel Marin
  *
