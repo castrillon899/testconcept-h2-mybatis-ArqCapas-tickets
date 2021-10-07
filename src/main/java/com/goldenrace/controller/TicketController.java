@@ -40,7 +40,7 @@ public class TicketController {
 	}
 
 	@GetMapping(path = "/getTicketById")
-	public ResponseEntity<GetTicketByIdResponseDTO> getTicketById(@RequestParam("id") String id) {
+	public ResponseEntity<GetTicketByIdResponseDTO> getTicketById(@RequestParam("id") int id) {
 	
 		GetTicketByIdResponseDTO response = ticketService.getTicketById(id);
 		return new ResponseEntity<GetTicketByIdResponseDTO>(response, HttpStatus.OK);

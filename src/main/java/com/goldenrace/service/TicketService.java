@@ -12,7 +12,7 @@ public interface TicketService {
 
 	public CreateTicketResponseDTO createTicket(CreateTicketRequestDTO request) ;
 	
-	public GetTicketByIdResponseDTO getTicketById(String id);
+	public GetTicketByIdResponseDTO getTicketById(int id);
 
 	public GetTicketByRangeResponseDTO getAllTicketsByRange(Date startDate, Date endDate);
 	

@@ -3,6 +3,8 @@ package com.goldenrace.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +29,18 @@ public class TicketServiceImp implements TicketService {
 	}
 
 	@Override
-	public GetTicketByIdResponseDTO getTicketById(String id) {
-		Ticket ticket = ticketMapper.findTicketById();
+	public GetTicketByIdResponseDTO getTicketById(int id) {
+		Ticket ticket = ticketMapper.findTicketById(id);
+		if (ticket == null) {
+			throw new RuntimeErrorException(null, "sin datos");
+
+		}
 		return new GetTicketByIdResponseAdapter().adapter(ticket);
 	}
 
 	@Override
 	public GetTicketByRangeResponseDTO getAllTicketsByRange(Date startDate, Date endDate) {
-		List<Ticket> tickets = ticketMapper.findAll();
+		List<Ticket> tickets = ticketMapper.findAll(startDate, endDate);
 		return new GetTicketByRangeResponseAdapter().adapter(tickets);
 	}
 
