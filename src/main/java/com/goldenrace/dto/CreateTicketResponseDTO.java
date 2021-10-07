@@ -2,18 +2,23 @@ package com.goldenrace.dto;
 
 public class CreateTicketResponseDTO {
 
-	private TicketDTO ticket;
+	private String idTicket;
 
-	public TicketDTO getTicket() {
-		return ticket;
+	public String getIdTicket() {
+		return idTicket;
 	}
 
-	public void setTicket(TicketDTO ticket) {
-		this.ticket = ticket;
+	public void setIdTicket(String idTicket) {
+		this.idTicket = idTicket;
+		
+		
 	}
 
 	@Override
 	public String toString() {
-		return "CreateTicketRequestDTO [ticket=" + ticket + "]";
+		return "CreateTicketResponseDTO [idTicket=" + idTicket + "]";
 	}
+	
+	
+	
 }

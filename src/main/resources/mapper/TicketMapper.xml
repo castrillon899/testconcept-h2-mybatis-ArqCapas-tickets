@@ -27,5 +27,26 @@
 		where u.id=#{id};
 	</select>
 	
+	<insert id="insertTicket" parameterType="com.goldenrace.model.Ticket"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into ticket (creation_date,amount)
+		values (#{creationDate},#{amount});
+	</insert>
 
+<!-- 
+	<insert id="insertTicketDetail">
+		insert into ticket_detail (ticket_id,amount,description )
+		values(#{ticket.id},#{ticketDetail.amount},#{ticketDetail.description})
+	</insert>
+	 -->
+
+<insert id="insertTicketDetail" parameterType="java.util.List">
+		Insert into ticket_detail (ticket_id,amount,description) values
+		<!-- 注意foreach的语法,集合直接写list字符串，用item表示当前遍历的对象，结果集合通过使用逗号分隔使用separator属性 -->
+		<foreach collection="list" item="item" separator=",">
+			(#{item.idTicket},#{item.amount},#{item.description})
+		</foreach>
+	</insert>
+	
+	
 </mapper>
