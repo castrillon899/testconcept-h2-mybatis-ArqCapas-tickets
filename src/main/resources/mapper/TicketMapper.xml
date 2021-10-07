@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goldenrace.model.TicketMapper">
+
+	<resultMap id="ticketMap" type="Ticket">
+		<id property="id" column="id"></id>
+		<result property="creationDate" column="creation_date"></result>
+		<result property="amount" column="amount"></result>
+       	<collection property="ticketDetail" ofType="TicketDetail">
+			<id property="id" column="ida"></id>
+			<result property="amount" column="amountdetail"></result>
+			<result property="idTicket" column="ticket_id"></result>
+			<result property="description" column="description"></result>
+		</collection>
+	</resultMap>
+
+	<select id="findAll" resultMap="ticketMap">
+		SELECT u.id,u.creation_date,u.amount,a.amount amountdetail,a.ticket_id,a.description description, a.id ida FROM ticket u LEFT JOIN ticket_detail a on u.id = a.ticket_id;
+	</select>
+	
+	
+     <select id="findTicketById" resultMap="ticketMap">
+		SELECT u.id,u.creation_date,u.amount,a.amount amountdetail,a.ticket_id,a.description description, a.id ida FROM ticket u LEFT JOIN ticket_detail a on u.id = a.ticket_id
+		where u.id=1;
+	</select>
+	
+
+</mapper>
